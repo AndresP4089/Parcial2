@@ -13,7 +13,7 @@ public class SwaggerConfig {
         return new OpenAPI().info(new Info()
                 .title("API Papeleria")
                 .version("1.0")
-                .description("Proyecto para gestionar los procesos de una papeleria")
+                .description("Proyecto para gestionar los procesos de unos equipos de futbol")
                 .contact(new Contact()
                         .name("Soporte API")
                         .email("juego4089@gmail.com")));

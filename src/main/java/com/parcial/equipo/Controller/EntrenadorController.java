@@ -14,31 +14,31 @@ public class EntrenadorController {
     @Autowired
     private EntrenadorService entrenadorService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Entrenador> listarTodos() {
         return entrenadorService.obtenerTodos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<Entrenador> obtenerPorId(@PathVariable Long id) {
         return entrenadorService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/crear/{id}")
     public Entrenador crear(@RequestBody Entrenador entrenador) {
         return entrenadorService.guardar(entrenador);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<Entrenador> actualizar(@PathVariable Long id, @RequestBody Entrenador entrenador) {
         return entrenadorService.actualizar(id, entrenador)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         return entrenadorService.eliminar(id) ?
                 ResponseEntity.noContent().build() :

@@ -14,31 +14,31 @@ public class PartidoController {
     @Autowired
     private PartidoService partidoService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Partido> listarTodos() {
         return partidoService.obtenerTodos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<Partido> obtenerPorId(@PathVariable Long id) {
         return partidoService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public Partido crear(@RequestBody Partido partido) {
         return partidoService.guardar(partido);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<Partido> actualizar(@PathVariable Long id, @RequestBody Partido partido) {
         return partidoService.actualizar(id, partido)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         return partidoService.eliminar(id) ?
                 ResponseEntity.noContent().build() :

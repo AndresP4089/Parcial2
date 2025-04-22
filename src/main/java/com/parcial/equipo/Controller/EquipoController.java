@@ -14,31 +14,31 @@ public class EquipoController {
     @Autowired
     private EquipoService equipoService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Equipo> listarTodos() {
         return equipoService.obtenerTodos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<Equipo> obtenerPorId(@PathVariable Long id) {
         return equipoService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public Equipo crear(@RequestBody Equipo equipo) {
         return equipoService.guardar(equipo);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<Equipo> actualizar(@PathVariable Long id, @RequestBody Equipo equipo) {
         return equipoService.actualizar(id, equipo)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         return equipoService.eliminar(id) ?
                 ResponseEntity.noContent().build() :
