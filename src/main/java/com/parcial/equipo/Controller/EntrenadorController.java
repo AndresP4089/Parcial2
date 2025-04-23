@@ -26,7 +26,7 @@ public class EntrenadorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/crear/{id}")
+    @PostMapping("/crear")
     public Entrenador crear(@RequestBody Entrenador entrenador) {
         return entrenadorService.guardar(entrenador);
     }

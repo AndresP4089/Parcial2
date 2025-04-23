@@ -44,4 +44,14 @@ public class JugadorController {
                 ResponseEntity.noContent().build() :
                 ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/listar/equipo/{idEquipo}")
+    public List<Jugador> obtenerJugadoresPorEquipo(@PathVariable Long idEquipo) {
+        return jugadorService.obtenerJugadoresPorEquipo(idEquipo);
+    }
+
+    @GetMapping("/listar/goles/{numGoles}")
+    public List<Jugador> obtenerJugadoresPorGoles(@PathVariable int numGoles) {
+        return jugadorService.obtenerJugadoresPorGoles(numGoles);
+    }
 }

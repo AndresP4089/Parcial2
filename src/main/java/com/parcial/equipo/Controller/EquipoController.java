@@ -3,6 +3,7 @@ package com.parcial.equipo.Controller;
 import com.parcial.equipo.Model.Equipo;
 import com.parcial.equipo.Service.EquipoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +44,10 @@ public class EquipoController {
         return equipoService.eliminar(id) ?
                 ResponseEntity.noContent().build() :
                 ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{idEquipo}/goles")
+    public Integer totalGolesPorEquipo(@Param("idEquipo") Long idEquipo) {
+        return equipoService.totalGolesPorEquipo(idEquipo);
     }
 }

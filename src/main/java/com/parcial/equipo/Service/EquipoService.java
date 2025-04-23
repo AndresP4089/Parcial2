@@ -3,6 +3,7 @@ package com.parcial.equipo.Service;
 import com.parcial.equipo.Model.Equipo;
 import com.parcial.equipo.Repository.EquipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +40,9 @@ public class EquipoService {
             equipoRepository.delete(equipo);
             return true;
         }).orElse(false);
+    }
+
+    public Integer totalGolesPorEquipo(@Param("equipoId") Long equipoId) {
+        return equipoRepository.totalGolesPorEquipo(equipoId);
     }
 }

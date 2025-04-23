@@ -1,6 +1,7 @@
 package com.parcial.equipo.Controller;
 
 import com.parcial.equipo.Model.Partido;
+import com.parcial.equipo.Repository.ResultadoPartidoDTO;
 import com.parcial.equipo.Service.PartidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +44,10 @@ public class PartidoController {
         return partidoService.eliminar(id) ?
                 ResponseEntity.noContent().build() :
                 ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/resultados")
+    public List<ResultadoPartidoDTO> obtenerResultadosPartidos() {
+        return partidoService.obtenerResultadosPartidos();
     }
 }

@@ -2,6 +2,7 @@ package com.parcial.equipo.Service;
 
 import com.parcial.equipo.Model.Partido;
 import com.parcial.equipo.Repository.PartidoRepository;
+import com.parcial.equipo.Repository.ResultadoPartidoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,9 @@ public class PartidoService {
             partidoRepository.delete(partido);
             return true;
         }).orElse(false);
+    }
+
+    public List<ResultadoPartidoDTO> obtenerResultadosPartidos() {
+        return partidoRepository.obtenerResultadosPartidos();
     }
 }

@@ -3,6 +3,7 @@ package com.parcial.equipo.Service;
 import com.parcial.equipo.Model.Jugador;
 import com.parcial.equipo.Repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +43,13 @@ public class JugadorService {
             jugadorRepository.delete(jugador);
             return true;
         }).orElse(false);
+    }
+
+    public List<Jugador> obtenerJugadoresPorEquipo(Long idEquipo) {
+        return jugadorRepository.obtenerJugadoresPorEquipo(idEquipo);
+    }
+
+    public List<Jugador> obtenerJugadoresPorGoles(int numGoles) {
+        return jugadorRepository.obtenerJugadoresPorGoles(numGoles);
     }
 }
